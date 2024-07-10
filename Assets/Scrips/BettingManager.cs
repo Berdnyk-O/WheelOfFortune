@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,7 +25,6 @@ public class BettingManager : MonoBehaviour
             { 4,0 },
             { 5,0 },
         };
-
     }
 
     public void SelectChip(Toggle chip)
