@@ -3485,7 +3485,6 @@ MonoBehaviour:
   BettingManager: {fileID: 1337347921}
   genSpeed: 0
   subSpeed: 0
-  isSpinning: 0
 --- !u!212 &1337337076
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3583,6 +3582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Money: 0
+  Roulette: {fileID: 1337337075}
 --- !u!4 &1337347922
 Transform:
   m_ObjectHideFlags: 0

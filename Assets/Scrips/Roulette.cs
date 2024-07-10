@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Roulette : MonoBehaviour
@@ -8,28 +6,33 @@ public class Roulette : MonoBehaviour
 
     public float genSpeed;
     public float subSpeed;
-    public bool isSpinning = false;
+
+    private bool _isSpinning = false;
+    public bool IsSpinning => _isSpinning;
 
     void Update()
     {
-        if (isSpinning)
+        if (_isSpinning)
         {
             transform.Rotate(0, 0, genSpeed, Space.World);
             genSpeed -= subSpeed;
         }
-        if (genSpeed <= 0 && isSpinning)
+        if (genSpeed <= 0 && _isSpinning)
         {
             genSpeed = 0;
-            isSpinning = false;
+            _isSpinning = false;
             BettingManager.CalculateWinnings(GetMultiplier());
         }
     }
 
     public void Spin()
     {
-        genSpeed = Random.Range(2.000f, 5.000f);
-        subSpeed = Random.Range(0.003f, 0.009f);
-        isSpinning = true;
+        if(!_isSpinning)
+        {
+            genSpeed = Random.Range(2.000f, 5.000f);
+            subSpeed = Random.Range(0.003f, 0.009f);
+            _isSpinning = true;
+        }
     }
 
     public int GetMultiplier()

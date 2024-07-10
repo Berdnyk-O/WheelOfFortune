@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Xml.Schema;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +10,8 @@ public class BettingManager : MonoBehaviour
 
     private Dictionary<int, int> _multipliersBetting;
     public Dictionary<int, int> MultipliersBetting { get => _multipliersBetting; }
+
+    public Roulette Roulette;
 
     void Start()
     {
@@ -24,7 +25,6 @@ public class BettingManager : MonoBehaviour
             { 4,0 },
             { 5,0 },
         };
-
     }
 
     public void SelectChip(Toggle chip)
@@ -41,11 +41,14 @@ public class BettingManager : MonoBehaviour
 
     public void PlaceBet(int multiplier)
     {
-        var bet = Money - _selectedChip;
-        if(bet >= 0)
+        if(!Roulette.IsSpinning)
         {
-            MultipliersBetting[multiplier] += _selectedChip;
-            Money = bet;
+            var bet = Money - _selectedChip;
+            if (bet >= 0)
+            {
+                MultipliersBetting[multiplier] += _selectedChip;
+                Money = bet;
+            }
         }
     }
 
