@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Roulette : MonoBehaviour
 {
-    [SerializeField] 
     public BettingManager BettingManager;
 
     public float genSpeed;
@@ -37,7 +36,7 @@ public class Roulette : MonoBehaviour
     {
         float rot = transform.eulerAngles.z;
 
-        /*if ((rot>=332.76 && rot< 334.47)  || 
+        if ((rot>=332.76 && rot< 334.47)  || 
             (rot>= 57.40 && rot < 77.33) ||
             (rot >= 119.71 && rot < 139.97) ||
             (rot >= 225.68 && rot < 246.99))
@@ -62,7 +61,7 @@ public class Roulette : MonoBehaviour
             (rot >= 268.24 && rot < 289.56))
         {
             return 4;
-        }*/
+        }
         
         return 5;
     }

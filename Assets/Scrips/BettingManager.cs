@@ -6,14 +6,17 @@ using UnityEngine.UI;
 public class BettingManager : MonoBehaviour
 {
     public int Money;
+
     private int _selectedChip;
-    Dictionary<int, int> MultipliersBetting;
+
+    private Dictionary<int, int> _multipliersBetting;
+    public Dictionary<int, int> MultipliersBetting { get => _multipliersBetting; }
 
     void Start()
     {
         Money = 200;
         _selectedChip = 0;
-        MultipliersBetting = new Dictionary<int, int>()
+        _multipliersBetting = new Dictionary<int, int>()
         {
             { 1,0 },
             { 2,0 },
@@ -41,11 +44,8 @@ public class BettingManager : MonoBehaviour
         var bet = Money - _selectedChip;
         if(bet >= 0)
         {
-
             MultipliersBetting[multiplier] += _selectedChip;
             Money = bet;
-
-            Debug.Log(MultipliersBetting[multiplier]);
         }
     }
 
@@ -57,10 +57,10 @@ public class BettingManager : MonoBehaviour
 
     public void ResetBets()
     {
-        MultipliersBetting[1] = 0;
-        MultipliersBetting[2] = 0;
-        MultipliersBetting[3] = 0;
-        MultipliersBetting[4] = 0;
-        MultipliersBetting[5] = 0;
+        _multipliersBetting[1] = 0;
+        _multipliersBetting[2] = 0;
+        _multipliersBetting[3] = 0;
+        _multipliersBetting[4] = 0;
+        _multipliersBetting[5] = 0;
     }
 }
