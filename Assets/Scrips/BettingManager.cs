@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class BettingManager : MonoBehaviour
 {
-    public int money;
+    public int Money;
     private int _selectedChip;
     Dictionary<int, int> MultipliersBetting;
 
     void Start()
     {
-        money = 200;
+        Money = 200;
         _selectedChip = 0;
         MultipliersBetting = new Dictionary<int, int>()
         {
@@ -38,19 +38,29 @@ public class BettingManager : MonoBehaviour
 
     public void PlaceBet(int multiplier)
     {
-        var bet = money - _selectedChip;
+        var bet = Money - _selectedChip;
         if(bet >= 0)
         {
 
-            MultipliersBetting[multiplier] += _selectedChip;  
-            money = bet;
+            MultipliersBetting[multiplier] += _selectedChip;
+            Money = bet;
 
             Debug.Log(MultipliersBetting[multiplier]);
         }
     }
 
-    void Update()
+    public void CalculateWinnings(int resultingMultiplier)
     {
-        
+        Money += MultipliersBetting[resultingMultiplier] * resultingMultiplier;
+        ResetBets();
+    }
+
+    public void ResetBets()
+    {
+        MultipliersBetting[1] = 0;
+        MultipliersBetting[2] = 0;
+        MultipliersBetting[3] = 0;
+        MultipliersBetting[4] = 0;
+        MultipliersBetting[5] = 0;
     }
 }

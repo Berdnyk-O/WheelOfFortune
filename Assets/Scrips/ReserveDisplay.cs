@@ -11,6 +11,6 @@ public class ReserveDisplay : MonoBehaviour
 
     void Update()
     {
-        MoneyText.text = BettingManager.money.ToString();
+        MoneyText.text = BettingManager.Money.ToString();
     }
 }
